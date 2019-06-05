@@ -4,7 +4,6 @@ process.on('unhandledRejection', error => {
 
 const fs = require('fs-extra');
 const path = require('path');
-const tempy = require('tempy');
 const chalk = require('chalk');
 const map = require('lodash/map');
 const reverse = require('lodash/reverse');
@@ -163,7 +162,7 @@ async function init() {
       lint: false,
     });
   } else {
-    workingDir = tempy.directory();
+    workingDir = path.join(__dirname, `../templatesPlayground/${Date.now()}`);
 
     templateModel = await createApp({
       workingDir,
